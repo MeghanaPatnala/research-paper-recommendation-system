@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <style>
+        /* General styling for the body */
+        body {
+            font-family: Georgia, serif, sans-serif;
+            background-image: url("{{ url_for('static', filename='3838986.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            color: #ffffff; /* Adjust text color for readability over the background */
+        }
+
+        /* Centering the content */
+        center {
+            display: block;
+            margin-top: 20%;
+        }
+
+        /* Styling the main heading */
+        h1 {
+            font-size: 2.5rem;
+            color: #0d0707;
+            margin-bottom: 20px;
+        }
+
+        /* Styling the buttons */
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: rgba(0, 123, 255, 0.8); /* Semi-transparent button */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgba(0, 86, 179, 0.8);
+        }
+
+        /* Styling the anchor tags to remove default underline */
+        a {
+            text-decoration: none;
+        }
+
+        /* Adding some margin between buttons */
+        a + a {
+            margin-left: 10px;
+        }
+
+        /* Adding a slight shadow to text for visibility */
+        h1, button {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div>
+            <h1><strong>Research Paper Recommendation System</strong></h1>
+            <!-- Register Button -->
+            <a href="{{ url_for('register') }}">
+                <button>Register</button>
+            </a>
+            <!-- Login Button -->
+            <a href="{{ url_for('login') }}">
+                <button>Login</button>
+            </a>
+        </div>
+    </center>
+</body>
+</html>

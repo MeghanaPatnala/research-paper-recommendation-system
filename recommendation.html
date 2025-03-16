@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('{{ url_for('static', filename='top-view-arrangement-with-construction-items.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            color: #444;  /* Darker text for readability */
+        }
+
+        /* Centering the content */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 50px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+        }
+
+        /* Header styling */
+        h1 {
+            color: #11101c;  /* Elegant purple */
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #080710;  /* Elegant purple */
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        /* Form styling */
+        form {
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: inline-block;
+            color: #555;  /* Dark gray text for the label */
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1.1em;
+            background-color: #f9f9f9;  /* Light gray background */
+        }
+
+        button[type="submit"] {
+            padding: 12px 25px;
+            background-color: #0d0c13;  /* Elegant purple button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0e0d13;  /* Darker purple on hover */
+        }
+
+        /* Styling for the recommended papers list */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #555;  /* White background for list items */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Softer shadow */
+        }
+
+        /* Logout button styling */
+        button {
+            padding: 12px 25px;
+            background-color: #090810;  /* Soft purple */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #07050d;  /* Darker purple on hover */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            input[type="text"], button[type="submit"] {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Paper Recommendation</h1>
+        <form method="POST">
+            <label>Enter the domain name, title or keyword:</label><br>
+            <input type="text" name="paper_title" required><br><br>
+            <button type="submit">Recommend</button>
+        </form>
+
+        {% if recommended_papers %}
+            <h2>Recommended Papers:</h2>
+            <ul>
+            {% for paper in recommended_papers[:2] %}
+                <li>{{ paper }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+    </div>
+</body>
+</html>

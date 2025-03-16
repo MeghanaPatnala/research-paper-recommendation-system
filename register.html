@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <style>
+            /* General body styling */
+            body {
+                font-family: Arial, sans-serif;
+                background-image: url("{{ url_for('static', filename='3610939.jpg') }}");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+                margin: 0;
+                padding: 0;
+                color: #ffffff; /* Ensure text is visible over background */
+            }
+
+            /* Centering the content */
+            center {
+                display: block;
+                margin-top: 10%;
+            }
+
+            /* Styling for the container */
+            div {
+                background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+                padding: 20px;
+                border-radius: 10px;
+                width: 400px;
+                margin: 0 auto;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            h2 {
+                color: #ffffff;
+                margin-bottom: 20px;
+            }
+
+            /* Form styling */
+            form {
+                text-align: left;
+            }
+
+            label {
+                font-size: 1em;
+                color: #ffffff;
+            }
+
+            input[type="text"], input[type="email"], input[type="password"] {
+                width: 90%;
+                padding: 10px;
+                margin: 10px ;
+                border: none;
+                border-radius: 5px;
+            }
+
+            button {
+                margin-left: 20px;
+                margin-right: 20px;
+                width: 90%;
+                padding: 10px;
+                font-size: 1em;
+                background-color: #007bff;
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+            /* Flash message styling */
+            h4 {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            /* Link styling */
+            p {
+                margin-top: 20px;
+                text-align: center;
+                color: #15130b;
+            }
+
+            p a {
+                color: #0056b3; /* Gold color for link */
+                text-decoration: none;
+            }
+
+            p a:hover {
+                text-decoration: underline;
+                color:#0056b3;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <div>
+                <h2>User Registration</h2>
+
+                <form method="POST">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required><br><br>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br><br>
+
+                    <button type="submit">Register</button>
+                </form>
+                
+                <!-- Display flash messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <h4 class="{{ category }}" style="color: red;">{{ message }}</h4>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </center>
+        <p><b>Already have an account? <a href="{{ url_for('login') }}">Login</a><b></p>
+    </body>
+</html>
